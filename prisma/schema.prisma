@@ -13,9 +13,9 @@ datasource db {
 model User {
   id              String           @id @default(uuid())
   name            String
-  email           String
-  isAdmin         Boolean
-  preferences     Json
+  email           String           @default("") // Set a default value for the email column
+  isAdmin         Boolean          @default(false) // Set a default value for the isAdmin column
+  // preferences     Json             
   //each user has multiple posts 
   writtenPosts    Post[]           @relation("WrittenPosts")
   FavoritePosts   Post[]           @relation("FavoritePosts")
