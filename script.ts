@@ -13,7 +13,7 @@ async function main() {
         }
     })
     // console.log(user1);
-    // console.log(user2);
+    console.log(user2);
     const users = await prisma.user.findMany()
     console.log(users);
 }
