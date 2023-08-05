@@ -35,6 +35,7 @@ model Post {
   rating        Float
   createdAt     DateTime
   updatedAt     DateTime
+  //authorid and id should be the same 
   author        User       @relation("WrittenPosts", fields: [authorId], references: [id])
   authorId      String
   favoritedBy   User?      @relation("FavoritePosts", fields: [favoritedById], references: [id])

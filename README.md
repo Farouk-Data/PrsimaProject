@@ -14,7 +14,7 @@ npx prisma init --datasource-provider postgresql
 every model needs an id 
 
 ## applying changes to DB (Migrating)
-npx primsa migrate dev (for development only)
+npx prisma migrate dev (for development only)
 
 ## generating clients (prisma client basics)
 npx prisma generate :
