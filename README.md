@@ -36,3 +36,5 @@ Each model as table that has multiple fields
     => One-to-one (one user can have one set of user preferences, and a preference can only reference one user)
 ## model attributes
 field and block attributes
+
+## enums

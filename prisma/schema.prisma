@@ -12,10 +12,11 @@ datasource db {
 
 model User {
   id              String           @id @default(uuid())
-  age             Int 
+  age             Int
   name            String
   email           String           @default("") // Set a default value for the email column
-  isAdmin         Boolean          @default(false) // Set a default value for the isAdmin column
+  // isAdmin         Boolean          @default(false) // Set a default value for the isAdmin column
+  role            Role             @default(BASIC)
   // preferences     Json             
   //each user has multiple posts 
   writtenPosts    Post[]           @relation("WrittenPosts")
@@ -23,7 +24,7 @@ model User {
   userPreferences UserPreferences?
 
   //block attribute 
-  @@unique([age,name]) //can't have two users with the same age & name together
+  @@unique([age, name]) //can't have two users with the same age & name together
   @@index([email]) //indexing the email
 }
 
@@ -36,7 +37,7 @@ model UserPreferences {
 }
 
 model Post {
-  id            String      @id @default(uuid())
+  id            String     @id @default(uuid())
   title         String
   averageRating Float
   createdAt     DateTime   @default(now())
@@ -56,4 +57,9 @@ model Category {
   id    String @id @default(uuid())
   name  String @unique
   posts Post[]
+}
+
+enum Role {
+  BASIC
+  ADMIN
 }
