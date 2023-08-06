@@ -32,5 +32,5 @@ Each model as table that has multiple fields
 - At a Prisma level, a connection between two models is always represented by a relation field on each side of the relation.
 - References and labels.
     => one-to-many relation between User and Post because one user can have many blog posts
-    => Many-to-many 
-    => One-to-one 
+    => Many-to-many (one category can reference multiple posts, and one post can have multiple categories )
+    => One-to-one (one user can have one set of user preferences, and a preference can only reference one user)
