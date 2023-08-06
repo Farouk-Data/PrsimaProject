@@ -12,6 +12,7 @@ datasource db {
 
 model User {
   id              String           @id @default(uuid())
+  age             Int 
   name            String
   email           String           @default("") // Set a default value for the email column
   isAdmin         Boolean          @default(false) // Set a default value for the isAdmin column
@@ -20,6 +21,9 @@ model User {
   writtenPosts    Post[]           @relation("WrittenPosts")
   FavoritePosts   Post[]           @relation("FavoritePosts")
   userPreferences UserPreferences?
+
+  //block attribute 
+  @@unique([age,name]) //can't have two users with the same age & name together
 }
 
 //One to one 
@@ -32,9 +36,10 @@ model UserPreferences {
 
 model Post {
   id            String     @id @default(uuid())
-  rating        Float
-  createdAt     DateTime  @default(now())
-  updatedAt     DateTime  @updatedAt()
+  title         String
+  averageRating Float
+  createdAt     DateTime   @default(now())
+  updatedAt     DateTime   @updatedAt()
   //authorid and id should be the same 
   author        User       @relation("WrittenPosts", fields: [authorId], references: [id])
   authorId      String
@@ -45,5 +50,6 @@ model Post {
 
 model Category {
   id    String @id @default(uuid())
+  name  String @unique
   posts Post[]
 }

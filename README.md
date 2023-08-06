@@ -34,3 +34,5 @@ Each model as table that has multiple fields
     => one-to-many relation between User and Post because one user can have many blog posts
     => Many-to-many (one category can reference multiple posts, and one post can have multiple categories )
     => One-to-one (one user can have one set of user preferences, and a preference can only reference one user)
+## model attributes
+field and block attributes
