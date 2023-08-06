@@ -33,8 +33,8 @@ model UserPreferences {
 model Post {
   id            String     @id @default(uuid())
   rating        Float
-  createdAt     DateTime
-  updatedAt     DateTime
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @updatedAt()
   //authorid and id should be the same 
   author        User       @relation("WrittenPosts", fields: [authorId], references: [id])
   authorId      String
