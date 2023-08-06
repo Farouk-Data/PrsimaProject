@@ -24,6 +24,7 @@ model User {
 
   //block attribute 
   @@unique([age,name]) //can't have two users with the same age & name together
+  @@index([email]) //indexing the email
 }
 
 //One to one 
@@ -35,7 +36,7 @@ model UserPreferences {
 }
 
 model Post {
-  id            String     @id @default(uuid())
+  id            String      @id @default(uuid())
   title         String
   averageRating Float
   createdAt     DateTime   @default(now())
@@ -46,6 +47,9 @@ model Post {
   favoritedBy   User?      @relation("FavoritePosts", fields: [favoritedById], references: [id])
   favoritedById String?
   categories    Category[]
+
+  //we can have a composed id
+  // @@id([title,authorId])
 }
 
 model Category {
